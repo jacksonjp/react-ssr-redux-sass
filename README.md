@@ -9,6 +9,8 @@ Uses:
 - Express JS (Server Rendering with prefetching data)
 - Redux with thunk middleware and isomorphic-fetch
 - Sass Loader with Web pack
+- Flow for type checking
+- EsLint for linting
 
 ## Setup
 First install the dependencies, in the root directory of this project run.
