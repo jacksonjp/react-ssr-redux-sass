@@ -1,15 +1,15 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-const ListToUsers = () => {
-  return (
-    <Route render={({ staticContext }) => {
+const ListToUsers = () => (
+  <Route
+    render={({ staticContext }) => {
       if (staticContext) {
         staticContext.status = 302;
       }
-      return <Redirect from="/list" to="/users" />
-    }}/>
-  );
-};
+      return <Redirect from="/list" to="/users" />;
+    }}
+  />
+);
 
 export default ListToUsers;

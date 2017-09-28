@@ -19,7 +19,7 @@ const routes = [
   },
   {
     path: '/users',
-    component: List,
+    component: List
   },
   {
     path: '*',

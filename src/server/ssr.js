@@ -1,6 +1,4 @@
 // Node Modules
-import fs from 'fs';
-import { basename, join } from 'path';
 import { matchPath } from 'react-router-dom';
 
 // Libraries
@@ -9,11 +7,11 @@ import { renderToString } from 'react-dom/server';
 
 // Redux
 // import {push} from 'react-router-redux';
-import createStore from '../shared/redux/createStore.js';
+import createStore from '../shared/redux/createStore';
 import createHistory from 'history/createMemoryHistory';
 
 // Components
-import Html from './html.js';
+import Html from './html';
 import routes from '../shared/routes/routes';
 
 function renderApp(url, res, store, assets) {
@@ -29,10 +27,10 @@ function renderApp(url, res, store, assets) {
     />
   );
 
-  res.send('<!DOCTYPE html>' + html);
+  res.send(`<!DOCTYPE html>${html}`);
 }
 
-export const renderPage = function(req, res) {
+export const renderPage = function (req, res) {
   const history = createHistory();
   const store = createStore(history);
 
@@ -42,11 +40,11 @@ export const renderPage = function(req, res) {
   const promises = [];
   // use `some` to imitate `<Switch>` behavior of selecting only
   // the first to match
-  routes.some(route => {
+  routes.some((route) => {
     // use `matchPath` here
     const match = matchPath(req.url, route);
     if (match) {
-      let fetchData = route.component.fetchData;
+      const fetchData = route.component.fetchData;
       if (fetchData instanceof Function) promises.push(fetchData(store));
     } else {
       promises.push(Promise.resolve(null));
@@ -54,7 +52,7 @@ export const renderPage = function(req, res) {
     return match;
   });
 
-  Promise.all(promises).then(data => {
+  Promise.all(promises).then(() => {
     renderApp(req.url, res, store, assets);
   });
 };

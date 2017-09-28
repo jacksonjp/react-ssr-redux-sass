@@ -18,16 +18,13 @@ class List extends Component {
   render() {
     return (
       <div>
-        {this.props.items.map(item => {
-          return <User key={item.id} user={item} />;
-        })}
+        {this.props.items.map(item => <User key={item.id} user={item} />)}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({ items: state.users.items });
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({ fetchUsers }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ fetchUsers }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(List);

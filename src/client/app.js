@@ -1,13 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import createHistory from 'history/createBrowserHistory';
 
 // Components
-import App from './AppContainer.js';
+import App from './AppContainer';
 
 // Redux
-import { Provider } from 'react-redux';
-import createStore from '../shared/redux/createStore.js';
-import createHistory from 'history/createBrowserHistory';
+import createStore from '../shared/redux/createStore';
 
 const history = createHistory();
 const store = createStore(history);
@@ -17,5 +17,5 @@ render(
   <Provider store={store}>
     <App history={history} />
   </Provider>,
-  rootEl
+  rootEl,
 );

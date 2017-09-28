@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-const NotFound = () => {
-  return (
-    <Route render={({ staticContext }) => {
+const NotFound = () => (
+  <Route
+    render={({ staticContext }) => {
       if (staticContext) {
         staticContext.status = 404;
       }
@@ -11,9 +11,9 @@ const NotFound = () => {
         <div>
           <h1>404 : Not Found</h1>
         </div>
-      )
-    }}/>
-  );
-};
+      );
+    }}
+  />
+);
 
 export default NotFound;

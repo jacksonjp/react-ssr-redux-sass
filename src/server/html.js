@@ -11,14 +11,15 @@ class Html extends Component {
     url: PropTypes.string.isRequired,
     store: PropTypes.object.isRequired,
     title: PropTypes.string.isRequired,
-    assets: PropTypes.object
+    assets: PropTypes.object,
+    context: PropTypes.object
   };
 
   render() {
     const { title, store, assets, url, context } = this.props;
-    let state = store.getState();
+    const state = store.getState();
     const initialState = `window.__INITIAL_STATE__ = ${JSON.stringify(state)}`;
-    const Layout = require('../../build/' + assets['prerender.js']).default;
+    const Layout = require(`../../build/${assets['prerender.js']}`).default;
     const root = renderToString(
       <Provider store={store}>
         <StaticRouter location={url} context={context}>
@@ -32,10 +33,7 @@ class Html extends Component {
         <head>
           <meta charSet="utf-8" />
           <title>{title}</title>
-          <meta
-            name="viewport"
-            content="width=device-width,initial-scale=1,shrink-to-fit=no"
-          />
+          <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no" />
           <meta name="theme-color" content="#000000" />
           <link rel="stylesheet" href={assets['main.css']} type="text/css" />
           <link rel="manifest" href="/static/manifest.json" />
