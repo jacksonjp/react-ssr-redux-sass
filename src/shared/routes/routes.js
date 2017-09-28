@@ -1,3 +1,5 @@
+//@flow
+
 import Home from '../containers/home';
 import List from '../containers/list';
 import NotFound from '../containers/notfound';

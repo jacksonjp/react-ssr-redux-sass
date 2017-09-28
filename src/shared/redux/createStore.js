@@ -5,7 +5,7 @@ import { routerReducer } from 'react-router-redux';
 import * as Reducers from './reducers/index.js';
 import thunk from 'redux-thunk';
 
-export default history => {
+export default () => {
   const store = createStore(
     combineReducers({
       ...Reducers,

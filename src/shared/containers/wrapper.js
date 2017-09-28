@@ -1,8 +1,15 @@
+//@flow
+
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Link from 'react-router-dom/Link';
 import styles from './wrapper.scss';
 
-class Wrapper extends Component {
+type Props = {
+  children: PropTypes.element
+};
+
+class Wrapper extends Component<Props> {
   render() {
     return (
       <div>

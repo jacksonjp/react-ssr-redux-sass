@@ -1,6 +1,12 @@
+//@flow
+
 import React from 'react';
 
-const User = props => (
+type Props = {
+  user: Object
+};
+
+const User = (props: Props) => (
   <div>
     <span>
       <i>person</i>
