@@ -1,0 +1,19 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "01:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: whatwg-fetch
+    versions:
+    - 3.5.0
+    - 3.6.1
+  - dependency-name: case-sensitive-paths-webpack-plugin
+    versions:
+    - 2.3.0
+  - dependency-name: react-dev-utils
+    versions:
+    - 4.2.2
